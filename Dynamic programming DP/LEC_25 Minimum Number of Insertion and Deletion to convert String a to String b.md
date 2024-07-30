@@ -1,15 +1,19 @@
 LEETCODE QUESTION LINK : https://leetcode.com/problems/delete-operation-for-two-strings/submissions/
 GFG QUESTION LINK : https://practice.geeksforgeeks.org/problems/minimum-number-of-deletions-and-insertions0209/1
 
-STEPS -
+### STEPS -
   1/- CALCULATE LCS OF THE TWO STRINGS X AND Y
+  
   2/- FOR NUMBER OF DELETION DO 
             LEN(X)-LCS = NUMBER OF DELETION
+            
   3/- FOR NUMBER OF INSERTION DO 
             LEN(Y)-LCS = NUMBER OF INSERTION
             
   4/- FINALLY FOR Minimum number of deletions and insertions.
               RETURN (NUMBER OF DELETION + NUMBER OF INSERTION)
+              
+```java
 class Solution {
     public int minDistance(String X, String Y) {
         
@@ -50,3 +54,4 @@ class Solution {
         
     }
 }
+```
