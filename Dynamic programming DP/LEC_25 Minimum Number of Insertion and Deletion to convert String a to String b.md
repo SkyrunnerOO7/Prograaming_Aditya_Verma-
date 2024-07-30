@@ -12,7 +12,10 @@ GFG QUESTION LINK : https://practice.geeksforgeeks.org/problems/minimum-number-o
             
   4/- FINALLY FOR Minimum number of deletions and insertions.
               RETURN (NUMBER OF DELETION + NUMBER OF INSERTION)
-              
+
+Note : n and m are inverse 
+I usually do n then m
+
 ```java
 class Solution {
     public int minDistance(String X, String Y) {
