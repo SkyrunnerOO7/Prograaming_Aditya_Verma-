@@ -1,11 +1,13 @@
 QUESTION LINK: https://leetcode.com/problems/is-subsequence/submissions/
-
+```
 STEP - 
   1/- CALCULATE LCS B/W S1 AND S2
   2/- IF LCS ANSWER (t[n][m]) EQUALS TO LENGTH OF S1 
           -- RETURN TRUE
           -- ELSE FALSE
-          
+```
+
+```java
 class Solution {
     public boolean isSubsequence(String s1, String s2) {
         
@@ -36,3 +38,34 @@ class Solution {
         
     }
 }
+```
+
+Recusrive Solution for isSubSequence
+```cpp
+class Solution {
+public:
+    int lcs(string x, string y, int n, int m, vector<vector<int> > &dp){
+        if(n==0|| m==0){
+            return 0;
+        }
+        
+        if(dp[n-1][m-1] != -1){
+            return dp[n-1][m-1];
+        }
+        
+        if(x[n-1] == y[m-1]){
+            return dp[n-1][m-1] = 1+ lcs(x,y,n-1,m-1,dp);
+        }
+        
+        return dp[n-1][m-1] = max(lcs(x,y,n,m-1,dp) , lcs(x,y,n-1,m,dp) );
+    }
+    bool isSubsequence(string s, string t) {
+        vector<vector<int> > dp(s.size(), vector<int> (t.size(),-1 ) );
+        
+        int x= lcs(s, t, s.size(), t.size(), dp);
+        
+        return x==s.size();
+    }
+};
+
+```
