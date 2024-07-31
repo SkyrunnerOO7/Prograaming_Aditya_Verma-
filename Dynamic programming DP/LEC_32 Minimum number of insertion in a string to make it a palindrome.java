@@ -1,5 +1,6 @@
 GFG QUESTION LINK : https://practice.geeksforgeeks.org/problems/form-a-palindrome1455/1
 
+Similar to the number of deletions to make a string palindrome.
 STEPS-
   1/- CREAT A SECOND STRING S2 WHICH IS THE REVERSE OF THE STRING S
   2/- CALCULATE LCS B/W THE TWO STRINGS S AND S2
