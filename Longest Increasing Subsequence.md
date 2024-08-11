@@ -1,3 +1,7 @@
+Here's a well-formatted and organized version of the explanation and code for finding the Longest Increasing Subsequence (LIS) using both the Dynamic Programming approach with sets and sorting, and without using a set.
+
+---
+
 # Longest Increasing Subsequence (LIS) - Dynamic Programming Approach
 
 ## Problem Description
@@ -6,23 +10,23 @@ Given an integer array `nums`, find the length of the longest strictly increasin
 
 ## Intuition
 
-To solve this problem, I used a set and array to create a new array because, in the Longest Common Subsequence (LCS) problem, we need two arrays. A set is used to store unique elements in ascending order, which can then be used to compare with the original array to find the LCS. This approach directly translates to finding the LIS.
+To solve this problem, different approaches can be used. One approach involves using a set and array to create a new array for comparison. This method is based on the concept of the Longest Common Subsequence (LCS) but adapted to find the LIS.
 
 ### Why Use a Set?
 
 - **Set for Uniqueness and Sorting:**
-  - By using a set, we ensure that the elements in the new array are unique and sorted in ascending order.
-  - This sorted array can then be compared with the original array to find the LCS, which directly translates to the LIS.
+  - A set helps to ensure that the elements in the new array are unique and sorted in ascending order.
+  - This sorted array can then be compared with the original array to find the LCS, which translates directly to the LIS.
 
 - **Set Usage:**
-  - The set is used to ensure that we get a strictly increasing subsequence. For a strictly increasing sequence, duplicates are not allowed. 
-  - For an increasing subsequence that can have equal values ( duplicates ), we would not use a set and would rely on sorting directly.
+  - A set ensures a strictly increasing sequence by removing duplicates. 
+  - For finding an increasing subsequence that can include equal values, you would not use a set and would instead rely on sorting directly.
 
 **Example:**
 - **Input:** `nums = [7, 7, 7, 7, 7, 7, 7]`
-- **Output:** `1` or `7`
-
-  For a strictly increasing sequence, the output is `1` (as only one element is allowed). If duplicates are considered for non-strictly increasing sequences, the output would be `7` (using sorting without a set).
+- **Output:**
+  - For a strictly increasing subsequence: `1` (only one unique element).
+  - For a non-strictly increasing subsequence: `7` (length of the array).
 
 ## Approach
 
@@ -43,6 +47,44 @@ To solve this problem, I used a set and array to create a new array because, in 
   - Due to the storage requirements for the DP array.
 
 ## Code
+### LIS BOTTOM UP :
+
+```cpp
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& x) {
+        int n = x.size();
+        set<int> st(x.begin(), x.end());
+        vector<int> y(st.begin(), st.end());
+        int m = y.size();
+        
+        int t[n+1][m+1];
+        
+        for(int i=0; i<n+1; i++){
+            for(int j =0; j<m+1; j++){
+                if(i==0 || j==0){
+                    t[i][j] =0;
+                }
+            }
+        }
+        
+        for(int i=1; i<n+1; i++){
+            for(int j=1; j<m+1; j++){
+                if(x[i-1] ==y[j-1]){
+                    t[i][j] = 1+ t[i-1][j-1];
+                }else{
+                    t[i][j]  = max(t[i-1][j], t[i][j-1]);
+                }
+            }
+        }
+        
+        return t[n][m];
+    }
+};
+```
+
+### Using Set  Memoization
+
 
 ```cpp
 class Solution {
@@ -68,6 +110,43 @@ public:
         int m = v.size();
         memset(dp, -1, sizeof(dp));
         return solve(nums, v, n, m);
+    }
+};
+```
+
+### Without Using Set (Just Sorting)
+
+```cpp
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& x) {
+        int n = x.size();
+        vector<int> y = x; 
+        
+        sort(y.begin(), y.end());
+        int m = y.size();
+        
+        int t[n+1][m+1];
+        
+        for(int i = 0; i <= n; i++) {
+            for(int j = 0; j <= m; j++) {
+                if(i == 0 || j == 0) {
+                    t[i][j] = 0;
+                }
+            }
+        }
+        
+        for(int i = 1; i <= n; i++) {
+            for(int j = 1; j <= m; j++) {
+                if(x[i-1] == y[j-1]) {
+                    t[i][j] = 1 + t[i-1][j-1];
+                } else {
+                    t[i][j] = max(t[i-1][j], t[i][j-1]);
+                }
+            }
+        }
+        
+        return t[n][m];
     }
 };
 ```
