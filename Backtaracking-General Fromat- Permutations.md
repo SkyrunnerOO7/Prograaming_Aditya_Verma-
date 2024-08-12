@@ -3,7 +3,7 @@
 ```cpp
 solve(pass by reference) {
     base condition {
-        // calculations can be here or not
+        // calculations can be here(maybe)
         return;
     }
     
@@ -11,6 +11,7 @@ solve(pass by reference) {
     // in backtracking we have a larger number of choices than recursion
     for(i in choices) {
         // do the changes in the values passed by reference
+        // calculations can be here(maybe)
         solve(pass by reference, next);
         // undo the changes that you just did above
     }
