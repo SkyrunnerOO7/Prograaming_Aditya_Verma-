@@ -115,7 +115,7 @@ public:
 ```
 
 ### Without Using Set (Just Sorting)
-
+This one will give us the longest increasing subsequence but not strictly increasing, only increasing
 ```cpp
 class Solution {
 public:
