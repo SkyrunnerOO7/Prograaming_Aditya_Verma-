@@ -29,8 +29,7 @@ public:
             if (currSum == sum) {
                 flag = true;
             }
-            return;
-        }
+]        }
         helper(root->left, sum, currSum);
         helper(root->right, sum, currSum);
 
