@@ -270,7 +270,7 @@ To count the number of ones in a binary representation, you can use the followin
 int countOnes(int num) {
     int count = 0;
     while (num > 0) {
-        if (num % 2 == 0) {
+        if (num % 2 != 0) {
             count++;
         }
         num = num / 2;
